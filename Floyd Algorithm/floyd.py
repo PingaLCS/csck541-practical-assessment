@@ -9,52 +9,44 @@ import itertools
 import time
 
 
-class FloydAlgorithm:
+def floyd(distance):
     """
-    This is a simple Floyd's algorithm with looping. 
+    A simple implementation of Floyd's algorithm function with looping.
     """
-    def floyd(distance):
-        """
-        A simple implementation of Floyd's algorithm function with looping.
-        """
-        # Performance testing by brute force
-        start_time = time.perf_counter()  # datetime.datetime.now()
-        for intermediate, start_node, end_node\
-                in itertools.product(range(MAX_LENGTH), range(MAX_LENGTH), range(MAX_LENGTH)):
-            # Assume that if start_node and end_node are the same
-            # then the distance would be zero
-            if start_node == end_node:
-                distance[start_node][end_node] = 0
-                continue
-            # return all possible paths and find the minimum
-            distance[start_node][end_node] = min(distance[start_node][end_node],
-                                                 distance[start_node][intermediate] + distance[intermediate][end_node])
-        end_time = time.perf_counter()  # datetime.datetime.now()
-        # Any value that have sys.maxsize has no path
-        PrintFunction.print_solution(distance)
-        # print the program running time
-        print(
-            f'The running time of Floyd algorithm with looping: {end_time - start_time}.')
+    # Performance testing by brute force
+    start_time = time.perf_counter()  # datetime.datetime.now()
+    for intermediate, start_node, end_node\
+            in itertools.product(range(MAX_LENGTH), range(MAX_LENGTH), range(MAX_LENGTH)):
+        # Assume that if start_node and end_node are the same
+        # then the distance would be zero
+        if start_node == end_node:
+            distance[start_node][end_node] = 0
+            continue
+        # return all possible paths and find the minimum
+        distance[start_node][end_node] = min(distance[start_node][end_node],
+                                             distance[start_node][intermediate] + distance[intermediate][end_node])
+    end_time = time.perf_counter()  # datetime.datetime.now()
+    # Any value that have sys.maxsize has no path
+    print_solution(distance)
+    # print the program running time
+    print(
+        f'The running time of Floyd algorithm with looping: {end_time - start_time}.')
 
 
-class PrintFunction:
+def print_solution(dist):
     """
-    This is a print function to show the result
+    A utility function to print the solution.
     """
-    def print_solution(dist):
-        """
-        A utility function to print the solution.
-        """
-        print(
-            "Following matrix shows the shortest distances between every pair of vertices")
-        for i in range(MAX_LENGTH):
-            for j in range(MAX_LENGTH):
-                if (dist[i][j] == NO_PATH):
-                    print("%7s" % ("NO_PATH"), end=" ")
-                else:
-                    print("%7d\t" % (dist[i][j]), end=' ')
-                if j == MAX_LENGTH-1:
-                    print()
+    print(
+        "Following matrix shows the shortest distances between every pair of vertices")
+    for i in range(MAX_LENGTH):
+        for j in range(MAX_LENGTH):
+            if (dist[i][j] == NO_PATH):
+                print(("NO_PATH"), end="  ")
+            else:
+                print(f'      {dist[i][j]}', end="  ")
+            if j == MAX_LENGTH-1:
+                print()
 
 
 # Driver's code
@@ -71,4 +63,6 @@ if __name__ == "__main__":
     MAX_LENGTH = len(graph[0])
 
     # Function call
-    FloydAlgorithm.floyd(graph)
+    floyd(graph)
+    print("-------------------------------------------------------------------------------")
+    print("-------------------------------------------------------------------------------")
