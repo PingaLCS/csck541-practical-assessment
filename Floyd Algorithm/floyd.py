@@ -35,10 +35,13 @@ class Floyd:
                                                  distance[start_node][intermediate] + distance[intermediate][end_node])
         end_time = time.perf_counter()  # datetime.datetime.now()
         # Any value that have sys.maxsize has no path
+        print(distance)
         self.print_solution(distance)
         # print the program running time
         print(
             f'The running time of Floyd algorithm with looping: {end_time - start_time}.')
+        # return graph for unit tes
+        return
 
     def print_solution(self, dist):
         """
