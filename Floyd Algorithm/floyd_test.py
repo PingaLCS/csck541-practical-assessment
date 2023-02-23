@@ -25,7 +25,7 @@ class TestFloyd(unittest.TestCase):
                        [NO_PATH, 0, 3, NO_PATH],
                        [NO_PATH, NO_PATH, 0, 1],
                        [NO_PATH, NO_PATH, NO_PATH, 0]]
-        # expected result (test case)
+        # Expected result (test case)
         expected_graph = [[0, 5, 8, 9],
                           [NO_PATH, 0, 3, 4],
                           [NO_PATH, NO_PATH, 0, 1],
@@ -35,11 +35,11 @@ class TestFloyd(unittest.TestCase):
 
         # Define object
         mfloyd = floyd.Floyd()
-        # Result graph
-        result_graph = mfloyd.floyd_looping(input_graph)
         # print the expected graph
         print("[Expected Graph] Show the distances between every pair of vertices of the expected graph matrix:")
         mfloyd.print_solution(expected_graph, MAX_LENGTH)
+        # Result graph
+        result_graph = mfloyd.floyd_looping(input_graph)
 
         # Test the result graph is/not equal to expected graph
         self.assertEqual(result_graph, expected_graph)
