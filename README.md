@@ -1,6 +1,8 @@
 # Mid-Module Assignment, CSCK541-Software Development in Practice Jan 2023 B
 This is a Practical Assessment: Programming. 
+
 Created by Pinga Lau Chi Shing, MSc Data Science and Artificial Intelligence student.
+
 Submitted to The University of Liverpool.
 
 ## The requirement of the assignment 
@@ -15,9 +17,9 @@ Floyd’s algorithm is a shortest path algorithm that identifies the shortest pa
 
 ## The Application
 Python file `floyd.py` included the main class Floyd with THREE functions.
-    - `floyd_imperative(self, distance)`: identify the shortest path between two nodes on a graph using the imperative method.
-    - `floyd_recursive(self, distance)`: identify the shortest path between two nodes on a graph using the recursive method.
-    - `print_solution(self, distance)`: a utility function to print the matrix result.
+  - `floyd_imperative(self, distance)`: identify the shortest path between two nodes on a graph using the imperative method.  
+  - `floyd_recursive(self, distance)`: identify the shortest path between two nodes on a graph using the recursive method.
+  - `print_solution(self, distance)`: a utility function to print the matrix result.
 
 Python file `floyd_test_case.py` pre-defined SIX sets of test case and the expected result.
 
