@@ -1,48 +1,163 @@
 """
-This is a unit test for Floyd's algorithm with looping. 
+This is a unit test for Floyd's algorithm.
+Included performance test and ptint the result
 """
 # importing the module
 import unittest
 import floyd
-import sys
+import floyd_test_case
+import time
 
 
 class TestFloyd(unittest.TestCase):
     """
-    This is a class that included the unit test for Floyd's algorithm with looping. 
+    This is a class that included the unit test for Floyd's algorithm. 
+    Also, included performance test and result
     """
 
-    def test_floyd(self):
-        """
-        A test of Floyd's algorithm function with looping.
-        Define the input graph and preset the expected graph.
-        Test the result graph is equal to the input graph or not.
-        """
-        # Define the number of NO_PATH in the graph
-        NO_PATH = sys.maxsize
-        # Define the distance matrix of the graph (test case)
-        input_graph = [[0, 5, NO_PATH, 10],
-                       [NO_PATH, 0, 3, NO_PATH],
-                       [NO_PATH, NO_PATH, 0, 1],
-                       [NO_PATH, NO_PATH, NO_PATH, 0]]
-        # Expected result (test case)
-        expected_graph = [[0, 5, 8, 9],
-                          [NO_PATH, 0, 3, 4],
-                          [NO_PATH, NO_PATH, 0, 1],
-                          [NO_PATH, NO_PATH, NO_PATH, 0]]
-        # Get and define the length of the graph
-        MAX_LENGTH = len(input_graph[0])
+    def test_case_1_i(self):
+        # Performance testing by brute force
+        start_time = time.perf_counter()
+        result_graph = floyd.Floyd.floyd_imperative(
+            self, floyd_test_case.case_1)
+        end_time = time.perf_counter()
+        # Unit test for case 1
+        self.assertEqual(result_graph, floyd_test_case.expect_output_1)
+        # Print the program running time of case 1
+        print(
+            f'[Performance Test] The running time of case 1 for the imperative floyd algorithm: {end_time - start_time}.')
 
-        # Define object
-        mfloyd = floyd.Floyd()
-        # print the expected graph
-        print("[Expected Graph] Show the distances between every pair of vertices of the expected graph matrix:")
-        mfloyd.print_solution(expected_graph)
-        # Result graph
-        result_graph = mfloyd.floyd_imperative(input_graph)
+    def test_case_2_i(self):
+        # Performance testing by brute force
+        start_time = time.perf_counter()
+        result_graph = floyd.Floyd.floyd_imperative(
+            self, floyd_test_case.case_2)
+        end_time = time.perf_counter()
+        # Unit test for case 2
+        self.assertEqual(result_graph, floyd_test_case.expect_output_2)
+        # Print the program running time of case 2
+        print(
+            f'[Performance Test] The running time of case 2 for the imperative floyd algorithm: {end_time - start_time}.')
 
-        # Test the result graph is/not equal to expected graph
-        self.assertEqual(result_graph, expected_graph)
+    def test_case_3_i(self):
+        # Performance testing by brute force
+        start_time = time.perf_counter()
+        result_graph = floyd.Floyd.floyd_imperative(
+            self, floyd_test_case.case_3)
+        end_time = time.perf_counter()
+        # Unit test for case 3
+        self.assertEqual(result_graph, floyd_test_case.expect_output_3)
+        # Print the program running time of case 3
+        print(
+            f'[Performance Test] The running time of case 3 for the imperative floyd algorithm: {end_time - start_time}.')
+
+    def test_case_4_i(self):
+        # Performance testing by brute force
+        start_time = time.perf_counter()
+        result_graph = floyd.Floyd.floyd_imperative(
+            self, floyd_test_case.case_4)
+        end_time = time.perf_counter()
+        # Unit test for case 4
+        self.assertEqual(result_graph, floyd_test_case.expect_output_4)
+        # Print the program running time of case 4
+        print(
+            f'[Performance Test] The running time of case 4 for the imperative floyd algorithm: {end_time - start_time}.')
+
+    def test_case_1_r(self):
+        # Performance testing by brute force
+        start_time = time.perf_counter()
+        result_graph = floyd.Floyd.floyd_recursive(
+            self, floyd_test_case.case_1)
+        end_time = time.perf_counter()
+        # Unit test for case 1
+        self.assertEqual(result_graph, floyd_test_case.expect_output_1)
+        # Print the program running time of case 1
+        print(
+            f'[Performance Test] The running time of case 1 for the recursive floyd algorithm: {end_time - start_time}.')
+
+    def test_case_2_r(self):
+        # Performance testing by brute force
+        start_time = time.perf_counter()
+        result_graph = floyd.Floyd.floyd_recursive(
+            self, floyd_test_case.case_2)
+        end_time = time.perf_counter()
+        # Unit test for case 2
+        self.assertEqual(result_graph, floyd_test_case.expect_output_2)
+        # Print the program running time of case 2
+        print(
+            f'[Performance Test] The running time of case 2 for the recursive floyd algorithm: {end_time - start_time}.')
+
+    def test_case_3_r(self):
+        # Performance testing by brute force
+        start_time = time.perf_counter()
+        result_graph = floyd.Floyd.floyd_recursive(
+            self, floyd_test_case.case_3)
+        end_time = time.perf_counter()
+        # Unit test for case 3
+        self.assertEqual(result_graph, floyd_test_case.expect_output_3)
+        # Print the program running time of case 3
+        print(
+            f'[Performance Test] The running time of case 3 for the recursive floyd algorithm: {end_time - start_time}.')
+
+    def test_case_4_r(self):
+        # Performance testing by brute force
+        start_time = time.perf_counter()
+        result_graph = floyd.Floyd.floyd_recursive(
+            self, floyd_test_case.case_4)
+        end_time = time.perf_counter()
+        # Unit test for case 4
+        self.assertEqual(result_graph, floyd_test_case.expect_output_4)
+        # Print the program running time of case 4
+        print(
+            f'[Performance Test] The running time of case 4 for the recursive floyd algorithm: {end_time - start_time}.')
+
+    def test_case_5_i(self):
+        # Performance testing by brute force
+        start_time = time.perf_counter()
+        result_graph = floyd.Floyd.floyd_imperative(
+            self, floyd_test_case.case_5)
+        end_time = time.perf_counter()
+        # Unit test for case 5
+        self.assertEqual(result_graph,  floyd_test_case.expect_output_5)
+        # Print the program running time of case 5
+        print(
+            f'[Performance Test] The running time of case 5 for the imperative floyd algorithm: {end_time - start_time}.')
+
+    def test_case_5_r(self):
+        # Performance testing by brute force
+        start_time = time.perf_counter()
+        result_graph = floyd.Floyd.floyd_recursive(
+            self, floyd_test_case.case_5)
+        end_time = time.perf_counter()
+        # Unit test for case 5
+        self.assertEqual(result_graph, floyd_test_case.expect_output_5)
+        # Print the program running time of case 5
+        print(
+            f'[Performance Test] The running time of case 5 for the recursive floyd algorithm: {end_time - start_time}.')
+
+    def test_case_6_i(self):
+        # Performance testing by brute force
+        start_time = time.perf_counter()
+        result_graph = floyd.Floyd.floyd_imperative(
+            self, floyd_test_case.case_6)
+        end_time = time.perf_counter()
+        # Unit test for case 6
+        self.assertEqual(result_graph,  floyd_test_case.expect_output_6)
+        # Print the program running time of case 6
+        print(
+            f'[Performance Test] The running time of case 6 for the imperative floyd algorithm: {end_time - start_time}.')
+
+    def test_case_6_r(self):
+        # Performance testing by brute force
+        start_time = time.perf_counter()
+        result_graph = floyd.Floyd.floyd_recursive(
+            self, floyd_test_case.case_6)
+        end_time = time.perf_counter()
+        # Unit test for case 6
+        self.assertEqual(result_graph,  floyd_test_case.expect_output_6)
+        # Print the program running time of case 6
+        print(
+            f'[Performance Test] The running time of case 6 for the recursive floyd algorithm: {end_time - start_time}.')
 
 
 if __name__ == "__main__":

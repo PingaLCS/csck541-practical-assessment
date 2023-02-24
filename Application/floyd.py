@@ -23,8 +23,6 @@ class Floyd:
         """
         # Define MAX_LENGTH
         MAX_LENGTH = len(distance[0])
-        # Performance testing by brute force
-        start_time = time.perf_counter()
 
         # Main calculation for imperative
         for intermediate, start_node, end_node\
@@ -38,12 +36,7 @@ class Floyd:
             distance[start_node][end_node] = min(distance[start_node][end_node],
                                                  distance[start_node][intermediate] + distance[intermediate][end_node])
 
-        # Performance testing by brute force
-        end_time = time.perf_counter()
-        # Print the program running time
-        print(
-            f'The running time of Floyd algorithm with imperative: {end_time - start_time}.')
-        # Return graph for unit test
+        # Return graph
         return distance
 
     def floyd_recursive(self, distance):
@@ -52,8 +45,6 @@ class Floyd:
         """
         # Define MAX_LENGTH
         MAX_LENGTH = len(distance[0])
-        # Performance testing by brute force
-        start_time = time.perf_counter()
 
         # Main calculation for recursive
         def recursive(intermediate, start_node, end_node):
@@ -69,12 +60,7 @@ class Floyd:
             distance[start_node][end_node] = recursive(
                 intermediate, start_node, end_node)
 
-        # Performance testing by brute force
-        end_time = time.perf_counter()
-        # Print the program running time
-        print(
-            f'The running time of Floyd algorithm with recursive: {end_time - start_time}.')
-        # Return graph for unit tes
+        # Return graph
         return distance
 
     def print_solution(self, distance):
@@ -103,29 +89,37 @@ if __name__ == "__main__":
     # Define the number of NO_PATH in the graph
     NO_PATH = sys.maxsize
     # Define the distance matrix of the graph
-    input_graph = [[0, 3, NO_PATH],
-                   [4, 0, 5],
-                   [9, 2, 0]]
-
-    input_graph = [[0, 2, NO_PATH, NO_PATH],
-                   [NO_PATH, 0, 3, NO_PATH],
-                   [NO_PATH, NO_PATH, 0, 4],
-                   [5, NO_PATH, NO_PATH, 0]]
+    input_imperative_graph = [[0, 3, NO_PATH, NO_PATH],
+                              [NO_PATH, 0, -3, 2],
+                              [-2, NO_PATH, 0, NO_PATH],
+                              [NO_PATH, -1, NO_PATH, 0]]
     # Function call
     floyd_algorithm = Floyd()
     # Print input graph
     print("[Input Graph] Show the distances between every pair of vertices of the input graph matrix:")
-    floyd_algorithm.print_solution(input_graph)
+    floyd_algorithm.print_solution(input_imperative_graph)
     # Print output graph with floyd imperative
     print("[Output Graph (imperative)] Following matrix shows the shortest distances between every pair of vertices:")
+    # Performance testing by brute force
+    start_time = time.perf_counter()
+    result_graph = floyd_algorithm.floyd_imperative(input_imperative_graph)
+    end_time = time.perf_counter()
+    print(
+        f'The running time of case 6 for the imperative floyd algorithm: {end_time - start_time}.')
     floyd_algorithm.print_solution(
-        floyd_algorithm.floyd_imperative(input_graph))
+        floyd_algorithm.floyd_imperative(result_graph))
     # Renew input graph
-    input_graph = [[0, 7, NO_PATH, 8],
-                   [NO_PATH, 0, 5, NO_PATH],
-                   [NO_PATH, NO_PATH, 0, 2],
-                   [NO_PATH, NO_PATH, NO_PATH, 0]]
+    input_recursive_graph = [[0, 3, NO_PATH, NO_PATH],
+                             [NO_PATH, 0, -3, 2],
+                             [-2, NO_PATH, 0, NO_PATH],
+                             [NO_PATH, -1, NO_PATH, 0]]
     # Print output graph with floyd recursive
     print("[Output Graph (recursive)] Following matrix shows the shortest distances between every pair of vertices:")
+    # Performance testing by brute force
+    start_time = time.perf_counter()
+    result_graph = floyd_algorithm.floyd_recursive(input_recursive_graph)
+    end_time = time.perf_counter()
+    print(
+        f'The running time of case 6 for the recursive floyd algorithm: {end_time - start_time}.')
     floyd_algorithm.print_solution(
-        floyd_algorithm.floyd_recursive(input_graph))
+        floyd_algorithm.floyd_recursive(result_graph))
